@@ -9,7 +9,10 @@ import stringify from "json-stable-stringify";
 
 export function adapterFactory(pluginManager) {
   const VCFPlugin = pluginManager.getPlugin("VariantsPlugin");
-  const { VcfTabixAdapterClass } = VCFPlugin.exports;
+  const {
+    vcfTabixAdapterConfigSchema,
+    VcfTabixAdapterClass,
+  } = VCFPlugin.exports;
 
   const configSchema = ConfigurationSchema(
     "CNVPytorVCFAdapter",
@@ -19,7 +22,7 @@ export function adapterFactory(pluginManager) {
         defaultValue: 0,
       },
     },
-    { baseConfiguration: VcfTabixAdapterClass, explicitlyTyped: true },
+    { baseConfiguration: vcfTabixAdapterConfigSchema, explicitlyTyped: true },
   );
 
   class AdapterClass extends VcfTabixAdapterClass {

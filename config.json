@@ -45,11 +45,11 @@
       "adapter": {
         "type": "CNVPytorVCFAdapter",
         "vcfGzLocation": {
-          "uri": "data/HG001_GRCh38.vcf.gz"
+          "uri": "HG001_GRCh38.vcf.gz"
         },
         "index": {
           "location": {
-            "uri": "data/HG001_GRCh38.vcf.gz.tbi"
+            "uri": "HG001_GRCh38.vcf.gz.tbi"
           }
         }
       }
