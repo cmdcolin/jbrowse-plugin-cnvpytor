@@ -38,13 +38,12 @@
   "tracks": [
     {
       "type": "FeatureTrack",
-      "trackId": "genehancer_ucsc_hg38",
+      "trackId": "cnvpytor_test_track",
       "name": "CNVPytor test track",
       "category": ["Annotation"],
       "assemblyNames": ["hg38"],
       "adapter": {
-        "type": "CNVPytorVCFAdapter",
-        "track": "geneHancerInteractionsDoubleElite"
+        "type": "CNVPytorVCFAdapter"
       }
     }
   ]

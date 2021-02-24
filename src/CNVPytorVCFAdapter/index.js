@@ -7,26 +7,22 @@ import { BaseFeatureDataAdapter } from "@jbrowse/core/data_adapters/BaseAdapter"
 import SimpleFeature from "@jbrowse/core/util/simpleFeature";
 import stringify from "json-stable-stringify";
 
-export const configSchema = ConfigurationSchema(
-  "CNVPytorVCFAdapter",
-  {
-    vcf: {
-      type: "fileLocation",
-      defaultValue: { uri: "/path/to/file.vcf.gz" },
-    },
-    sampleIndex: {
-      type: "number",
-      defaultValue: 0,
-    },
-  },
-  { explicitlyTyped: true },
-);
-
 export function adapterFactory(pluginManager) {
   const VCFPlugin = pluginManager.getPlugin("VariantsPlugin");
   const { VcfTabixAdapterClass } = VCFPlugin.exports;
 
-  return class AdapterClass extends VcfTabixAdapterClass {
+  const configSchema = ConfigurationSchema(
+    "CNVPytorVCFAdapter",
+    {
+      sampleIndex: {
+        type: "number",
+        defaultValue: 0,
+      },
+    },
+    { baseConfiguration: VcfTabixAdapterClass, explicitlyTyped: true },
+  );
+
+  class AdapterClass extends VcfTabixAdapterClass {
     constructor(config) {
       super(config);
       this.config = config;
@@ -53,5 +49,7 @@ export function adapterFactory(pluginManager) {
     }
 
     freeResources() {}
-  };
+  }
+
+  return { AdapterClass, configSchema };
 }
