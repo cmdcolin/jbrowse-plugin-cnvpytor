@@ -37,7 +37,7 @@
   ],
   "tracks": [
     {
-      "type": "FeatureTrack",
+      "type": "QuantitativeTrack",
       "trackId": "cnvpytor_test_track",
       "name": "CNVPytor test track",
       "category": ["Annotation"],

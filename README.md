@@ -26,4 +26,12 @@ Then visit
 
 http://localhost:3000/?config=http://localhost:9000/config.json
 
+Or with track already loaded
+
+http://localhost:3000/?config=http%3A%2F%2Flocalhost%3A9000%2Fconfig.json&session=share-NzoxMKjW8L&password=qA6hS
+
 This plugin is a work in progress with @arpanda
+
+## Screenshot
+
+![](img/1.png)
