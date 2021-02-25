@@ -44,12 +44,15 @@
       "assemblyNames": ["hg38"],
       "adapter": {
         "type": "CNVPytorVCFAdapter",
+        "gcContent": {
+          "uri": "data/hg38.10000.gc"
+        },
         "vcfGzLocation": {
-          "uri": "HG001_GRCh38.vcf.gz"
+          "uri": "data/HG001_GRCh38.vcf.gz"
         },
         "index": {
           "location": {
-            "uri": "HG001_GRCh38.vcf.gz.tbi"
+            "uri": "data/HG001_GRCh38.vcf.gz.tbi"
           }
         }
       }
