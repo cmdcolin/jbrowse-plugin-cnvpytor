@@ -30,18 +30,15 @@ export class GetFit {
   }
   max_rd() {
     let chr_score = this.get_all_normal_rd();
-    console.log(chr_score);
     const chr_mean_rd = this.getMean(chr_score);
     const max_rd = parseInt(10 * chr_mean_rd + 1);
     return max_rd;
   }
   fit_data(data_type) {
     let chr_score;
-    if (data_type != "gc") {
-      // console.log(" normal rd");
+    if (data_type !== "gc") {
       chr_score = this.get_all_normal_rd();
     } else {
-      // console.log(" gc rd");
       chr_score = this.get_all_gc_rd();
     }
     const chr_mean_rd = this.getMean(chr_score);
@@ -52,7 +49,7 @@ export class GetFit {
 
     const max_value =
       parseInt(max_rd / rd_bin_size) * rd_bin_size + rd_bin_size;
-    const range_data = range_function(0, max_value, (step = rd_bin_size));
+    const range_data = range_function(0, max_value, rd_bin_size);
 
     const dist_p = this.histogram(chr_score, range_data);
     let fit_data = fit_normal(range_data, dist_p);
@@ -90,6 +87,7 @@ export class GetFit {
     );
   }
 }
+
 function get_fit_info(avgbin) {
   let chr_score = [];
   for (const chr in avgbin) {
@@ -155,10 +153,6 @@ function fit_normal(bins, dist_p) {
       return r;
     }
   });
-  // console.log(bins);
-  // console.log('area, mean, sigma');
-  // console.log( area, mean, sigma);
-  //console.log();
   //var mean = sum(x * y) / sum(y)
   //var sigma = np.sqrt(sum(y * (x - mean) ** 2) / sum(y))
   //var area = sum(y[:-1] * (x[1:] - x[:-1]))

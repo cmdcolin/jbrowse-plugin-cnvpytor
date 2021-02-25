@@ -7,7 +7,7 @@ import { ObservableCreate } from "@jbrowse/core/util/rxjs";
 import AbortablePromiseCache from "abortable-promise-cache";
 import SimpleFeature from "@jbrowse/core/util/simpleFeature";
 import { Partition } from "./MeanShift";
-import { range_function, histogram, fit_normal } from "./util";
+import { GetFit } from "./util";
 
 function getMean(data) {
   return (
@@ -110,10 +110,12 @@ export function adapterFactory(pluginManager) {
     getFeatures(region) {
       return ObservableCreate(async observer => {
         try {
+          console.log("calculating");
           const { bins, average } = await this.featureCache.get(
             region.refName,
             region,
           );
+          console.log({ bins });
           bins.forEach(feature => {
             if (feature.end > region.start && feature.start < region.end) {
               observer.next(
