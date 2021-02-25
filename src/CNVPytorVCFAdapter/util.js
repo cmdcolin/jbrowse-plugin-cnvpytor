@@ -1,4 +1,5 @@
-import LM from "ml-levenberg-marquardt";
+// for some reason the import LM es6 version fails
+const LM = require("ml-levenberg-marquardt").default;
 
 export class GetFit {
   constructor(avgbin) {
